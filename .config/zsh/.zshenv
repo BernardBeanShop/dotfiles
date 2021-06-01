@@ -1,5 +1,9 @@
 export ZDOTDIR=~/.config/zsh/
 
+# Add ~/.local/bin to PATH
+
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+
 # Declutter
 
 export XDG_CONFIG_HOME=$HOME/.config
