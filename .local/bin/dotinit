@@ -1,0 +1,11 @@
+#!/bin/bash
+
+alias config='/usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME'
+git clone --bare https://github.com/cheru-dev/dotfiles $HOME/.local/share/dotfiles
+if /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout ; then
+    exit 0
+else
+mkdir -p ~/.local/share/dotbackup && \
+  config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
+  xargs -I{} mv {} ~/.local/share/dotbackup/{}
+fi
