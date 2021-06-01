@@ -1,4 +1,4 @@
-#!/bin/bash &> /dev/null
+#!/bin/bash
 
 {
 git clone --bare https://github.com/cheru-dev/dotfiles $HOME/.local/share/dotfiles
