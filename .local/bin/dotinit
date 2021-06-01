@@ -8,4 +8,5 @@ else
 mkdir -p ~/.local/share/dotbackup && \
   /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
   xargs -I{} mv {} ~/.local/share/dotbackup/{}
+  /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout
 fi
