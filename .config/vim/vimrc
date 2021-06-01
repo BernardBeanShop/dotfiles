@@ -1,0 +1,3 @@
+set runtimepath+=~/.config/vim,~/.config/vim/after
+set viminfo+=n~/.config/vim/viminfo
+let g:netrw_home=$XDG_CACHE_HOME.'/vim'
