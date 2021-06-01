@@ -2,13 +2,13 @@
 
 set +e
 git clone --bare https://github.com/cheru-dev/dotfiles $HOME/.local/share/dotfiles &> /dev/null
-if /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout ; then
+if /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout &> /dev/null ; then
     echo "Done!"
     exit 0
 else
-    mkdir -p ~/.local/share/dotbackup && \
-  /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
-  xargs -I{} mv {} ~/.local/share/dotbackup/{}
+    mkdir -p ~/.local/share/dotbackup &&
+  /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout 2>&1 | egrep "\s+\." | awk {'print $1'} |
+  xargs -I{} mv {} ~/.local/share/dotbackup/{} &> /dev/null
   /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout
-  echo "Done! Existing files were moved to ~/.local/share/dotbackup"
+  echo "Done! Existing files were moved to ~/.local/share/dotbackup" 
 fi
