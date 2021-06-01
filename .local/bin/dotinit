@@ -1,6 +1,6 @@
 #!/bin/bash &> /dev/null
 
-set +e
+{
 git clone --bare https://github.com/cheru-dev/dotfiles $HOME/.local/share/dotfiles
 if /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout ; then
     exit 0
@@ -10,3 +10,4 @@ else
   xargs -I{} mv {} ~/.local/share/dotbackup/{}
   /usr/bin/git --git-dir=$HOME/.local/share/dotfiles --work-tree=$HOME checkout
 fi
+} &> /dev/null
